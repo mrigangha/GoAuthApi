@@ -14,7 +14,7 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(services.CorsMiddleware)
-	r.Get("/show", api.GetUsers)
+	r.With(services.RateLimiterMiddleware).Get("/show", api.GetUsers)
 	r.Post("/signup", api.CreateUser)
 	http.ListenAndServe(":8080", r)
 	os.Exit(0)

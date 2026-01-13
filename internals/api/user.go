@@ -22,6 +22,7 @@ type User struct {
 	Email    string `json:"email"`
 	Phone    string `json:phone`
 	Password string `json:"password"`
+	Role     Role   `json:"role"`
 }
 
 func GetUsers(w http.ResponseWriter, r *http.Request) {
